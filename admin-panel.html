@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+
+body{
+    background:#f4f6f9;
+    display:flex;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:230px;
+    background:#b30000;
+    color:white;
+    height:100vh;
+    padding:20px;
+    position:fixed;
+}
+
+.sidebar h2{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    text-decoration:none;
+    padding:12px;
+    margin-bottom:10px;
+    border-radius:6px;
+}
+
+.sidebar a:hover{
+    background:#8f0000;
+}
+
+.logout{
+    position:absolute;
+    bottom:20px;
+    width:190px;
+    background:#111;
+    text-align:center;
+    padding:12px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+/* MAIN CONTENT */
+.main{
+    margin-left:250px;
+    padding:30px;
+    width:100%;
+}
+
+section{
+    background:white;
+    padding:20px;
+    margin-bottom:25px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+h2{color:#b30000;margin-bottom:15px;}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    border:1px solid #ccc;
+    padding:10px;
+    text-align:center;
+}
+
+th{
+    background:#b30000;
+    color:white;
+}
+
+input{
+    padding:10px;
+    margin:5px;
+}
+
+button{
+    padding:8px 12px;
+    background:#b30000;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.reject{
+    background:#555;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+     <h2>🛠 Admin</h2>
+<a href="#" class="menu active" onclick="showSection('requests', this)">Blood Requests</a>
+<a href="#" class="menu" onclick="showSection('donors', this)">Manage Donors</a>
+<a href="#" class="menu" onclick="showSection('banks', this)">Manage Blood Banks</a>
+
+    <div class="logout" onclick="logout()">🚪 Logout</div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+<!-- REQUESTS -->
+<section id="requests">
+<h2>Blood Requests</h2>
+<table>
+<thead>
+<tr>
+<th>Patient</th>
+<th>Blood Group</th>
+<th>Units</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody id="reqTable"></tbody>
+</table>
+</section>
+
+<!-- DONORS -->
+<section id="donors">
+<h2>Manage Donors</h2>
+<input id="dName" placeholder="Donor Name">
+<input id="dGroup" placeholder="Blood Group">
+<button onclick="addDonor()">Add Donor</button>
+
+<ul id="donorList"></ul>
+</section>
+
+<!-- BLOOD BANKS -->
+<section id="banks">
+<h2>Manage Blood Banks</h2>
+<input id="bName" placeholder="Bank Name">
+<input id="bLoc" placeholder="Location">
+<button onclick="addBank()">Add Bank</button>
+
+<ul id="bankList"></ul>
+</section>
+
+</div>
+
+<script>
+// SECURITY CHECK
+if(localStorage.getItem("adminLogged")!=="true"){
+    window.location="admin.html";
+}
+
+/* BLOOD REQUESTS */
+let requests=JSON.parse(localStorage.getItem("requests"))||[];
+
+function showReq(){
+    reqTable.innerHTML="";
+    requests.forEach((r,i)=>{
+        reqTable.innerHTML+=`
+        <tr>
+            <td>${r.name}</td>
+            <td>${r.group}</td>
+            <td>${r.units}</td>
+            <td>${r.status}</td>
+            <td>
+                <button onclick="approve(${i})">Approve</button>
+                <button class="reject" onclick="reject(${i})">Reject</button>
+            </td>
+        </tr>`;
+    });
+}
+
+function approve(i){requests[i].status="Approved";save();}
+function reject(i){requests[i].status="Rejected";save();}
+function save(){
+    localStorage.setItem("requests",JSON.stringify(requests));
+    showReq();
+}
+
+/* DONORS */
+let donors=JSON.parse(localStorage.getItem("donors"))||[];
+
+function addDonor(){
+    donors.push({name:dName.value,group:dGroup.value});
+    localStorage.setItem("donors",JSON.stringify(donors));
+    dName.value=""; dGroup.value="";
+    showDonors();
+}
+
+function showDonors(){
+    donorList.innerHTML="";
+    donors.forEach((d,i)=>{
+        donorList.innerHTML+=`
+        <li>${d.name} (${d.group})
+        <button onclick="delDonor(${i})">X</button></li>`;
+    });
+}
+
+function delDonor(i){
+    donors.splice(i,1);
+    localStorage.setItem("donors",JSON.stringify(donors));
+    showDonors();
+}
+
+/* BLOOD BANKS */
+let banks=JSON.parse(localStorage.getItem("banks"))||[];
+
+function addBank(){
+    banks.push({name:bName.value,loc:bLoc.value});
+    localStorage.setItem("banks",JSON.stringify(banks));
+    bName.value=""; bLoc.value="";
+    showBanks();
+}
+
+function showBanks(){
+    bankList.innerHTML="";
+    banks.forEach((b,i)=>{
+        bankList.innerHTML+=`
+        <li>${b.name} - ${b.loc}
+        <button onclick="delBank(${i})">X</button></li>`;
+    });
+}
+
+function delBank(i){
+    banks.splice(i,1);
+    localStorage.setItem("banks",JSON.stringify(banks));
+    showBanks();
+}
+
+/* LOGOUT */
+function logout(){
+    localStorage.removeItem("adminLogged");
+    window.location="index.html";
+}
+
+showReq();
+showDonors();
+showBanks();
+
+function showSection(id, el){
+    // sab sections hide
+    document.querySelectorAll("section").forEach(sec=>{
+        sec.style.display = "none";
+    });
+
+    // sirf clicked wala show
+    document.getElementById(id).style.display = "block";
+
+    // active class remove
+    document.querySelectorAll(".menu").forEach(m=>{
+        m.classList.remove("active");
+    });
+
+    // active class add
+    el.classList.add("active");
+}
+
+// page load pe default open
+document.getElementById("requests").style.display = "block";
+
+
+</script>
+
+</body>
+</html>

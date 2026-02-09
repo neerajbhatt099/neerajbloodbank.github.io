@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blood Bank Management</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+    scroll-behavior:smooth;
+}
+
+/* HEADER */
+header{
+    background:linear-gradient(135deg,#b30000,#ff4d4d);
+    padding:20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h1{color:white;}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:18px;
+    font-weight:500;
+}
+
+/* HERO */
+.hero{
+    height:90vh;
+    background:url("https://media.istockphoto.com/id/1266746884/photo/doctor-working-with-donor-blood.jpg?s=612x612&w=0&k=20&c=HBEdCB4M7pKQ4RgcA668fB96gK9ntVeZLXAXFE2mTMI=") center/cover no-repeat;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+}
+
+.hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+}
+
+.hero-content{
+    position:relative;
+    max-width:700px;
+}
+
+.hero h2{font-size:48px;margin-bottom:10px;}
+.hero p{margin-bottom:20px;}
+
+.hero button{
+    padding:15px 35px;
+    border:none;
+    background:#ff4d4d;
+    color:white;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* SECTIONS */
+section{
+    padding:80px 20px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.section-title h2{
+    font-size:36px;
+    color:#b30000;
+}
+
+/* ABOUT */
+.about-grid{
+    display:grid;
+    grid-template-columns:1.2fr 0.8fr;
+    gap:30px;
+}
+
+.about-grid img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:15px;
+}
+
+/* CARDS */
+.card{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+.card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    text-align:center;
+}
+table{
+    width:100%;
+    background:white;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+th,td{
+    padding:15px;
+    text-align:center;
+}
+
+th{
+    background:#b30000;
+    color:white;
+}
+tr:nth-child(even){
+    background:#f9f9f9;
+}
+
+/* FORMS */
+form{
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+.donor img{
+    width:100px;
+    height:100px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+   form input, form select, form textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+form button{
+    width:100%;
+    padding:15px;
+    background:#b30000;
+    color:white;
+    border:none;
+    border-radius:30px;
+} 
+
+/* DONORS */
+.donors{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+.donor{
+    background:white;
+    border-radius:15px;
+    text-align:center;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+/* CONTACT */
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;}
+
+/* GALLERY */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+}
+
+/* BLOOD BANKS */
+.banks{
+      display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color:white;
+}
+
+.blood-bank-container {
+    width: 80%;
+    margin: 30px auto;
+}
+
+.blood-bank {
+    background-color:#b30000;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(192, 21, 21, 0.1);
+}
+
+.blood-bank h2 {
+    color:skyblue ;
+    margin-bottom: 5px;
+}
+}
+
+/* CONTACT */
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:30px;
+}
+
+form{
+    background:white;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+form input, form textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+}
+
+form button{
+    width:100%;
+    padding:15px;
+    background:#b30000;
+    color:white;
+    border:none;
+    border-radius:30px;
+}
+
+iframe{
+    width:100%;
+    height:100%;
+    border-radius:15px;
+    border:none;
+}
+
+/* FOOTER */
+footer{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+/* NAVBAR ANIMATION */
+.nav-links a{
+    position:relative;
+}
+
+.nav-links a::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    background:white;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+/* GLOBAL HOVER EFFECT */
+.card, .donor, .bank, table, form{
+    transition:0.4s ease;
+}
+
+.card:hover, .donor:hover, .bank:hover{
+    transform:translateY(-10px);
+}
+
+/* GALLERY ADVANCED GRID */
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+    gap:10px;
+}
+
+.gallery img{
+    width:100%;
+    height:120px;
+    object-fit:cover;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.5s ease;
+    position:relative;
+}
+
+.gallery img:hover{
+    transform:scale(1.08);
+    filter:brightness(80%);
+}
+
+/* SCROLL ANIMATION */
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s ease;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+body {
+    font-family: Arial, sans-serif;
+    background: #f2f2f2;
+}
+
+.container {
+    width: 70%;
+    margin: auto;
+    margin-top: 40px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h1 {
+    text-align: center;
+    color: darkred;
+}
+
+.form-box, .table-box {
+    margin-top: 30px;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+}
+
+button {
+    padding: 10px 15px;
+    background: darkred;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background: #b30000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+
+th {
+    background: darkred;
+    color: white;
+}
+
+
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+    <h1>🩸 Blood Bank</h1>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#banks">Blood Banks</a>
+        <a href="#availability">Availability</a>
+        <a href="#purpose">Purpose</a>
+        <a href="#donors">Donors</a>
+        <a href="#contact">Contact</a>
+        <a href="admin.html">admin login</a>
+    </div>
+</nav>
+
+</header>
+
+<!-- HERO -->
+<section id="home" class="hero" class="reveal">
+<div class="hero-content">
+    <h2>Donate Blood, Save Lives</h2>
+    <p>One donation can save up to three lives.</p>
+    <button onclick="document.getElementById('contact').scrollIntoView()">Contact Us</button>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+<div class="section-title" class="reveal">
+    <h2>About Our Blood Bank</h2>
+</div>
+
+<div class="about-grid" >
+    <div>
+        <p>
+            Our Blood Bank Management System connects donors, hospitals, and patients
+            through a reliable and secure platform. We focus on safe blood collection,
+            testing, storage, and emergency distribution.
+        </p><br>
+
+        <p>
+            Partnered with licensed hospitals and blood banks, we ensure quality,
+            transparency, and timely availability of blood units for critical needs.
+        </p><br>
+
+        <h3>Why Donate Blood?</h3><br>
+        <ul>
+            <li>✔ Saves accident victims</li>
+            <li>✔ Supports cancer & surgery patients</li>
+            <li>✔ No artificial substitute for blood</li>
+            <li>✔ Boosts donor health</li>
+            <li>✔ Builds a healthier society</li>
+            <li>✔ Quick, safe & painless process</li>
+        </ul>
+    </div>
+
+    <img src="https://medanta.s3.ap-south-1.amazonaws.com/speciality-contents/January2024/6LHVNGVrWTUKhbWi8uJVTl89f3BQfl-metaQmxvb2QtQmFuay5wbmc=-.png">
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="reveal">
+  <div class="section-title">
+    <h2>Gallery</h2>
+  </div>
+
+  <div class="gallery">
+    <img src="https://www.hopkinsmedicine.org/-/media/images/health/2_-treatment/pathology/blood-banking-teaser.jpg"height="500px"width="500px">
+    <img src="https://cdn.britannica.com/09/147309-050-70516926/Blood-bank-employee-blood.jpg"height="500px"width="500px">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOD52N-v_BxzOfUtq1fATnCvkhiT-c4a0L-w&s"height="500px"width="500px">
+    <img src="https://www.shutterstock.com/image-photo/doctor-holds-blood-sample-tube-260nw-430010287.jpg"height="500px"width="500px">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz4p8Xrnp8cxSf_7MyeUeFqCZefSh5jv4tIQ&s"height="500px"width="500px">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrApHWxJY3Gqnrko53H-DDCrXREJrjq75GQ&s"height="500px"width="500px">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfgUJc_IBI_sMEoUazSL1psHxYLpoDNEH9oQ&s"height="500px"width="500px">
+    <img src="https://vims.ac.in/vims-hospital/wp-content/uploads/2023/01/Benefits-of-blood-donation.jpg"height="500px"width="500px">
+  </div>
+</section>
+
+<!-- BLOOD BANKS -->
+<section id="banks" class="reveal">
+<div class="section-title">
+    <h2>Partnered Blood Banks</h2>
+</div>
+
+<div class="banks">
+    <div class="bank">
+        <h3>City Central Blood Bank</h3>
+        <p>📍 Downtown</p>
+        <p>📞 +91 98765 43210</p>
+    </div>
+    <div class="bank">
+        <h3>Red Cross Blood Center</h3>
+        <p>📍 Medical Road</p>
+        <p>📞 +91 91234 56789</p>
+    </div>
+    <div class="bank">
+        <h3>LifeCare Blood Services</h3>
+        <p>📍 Green Park</p>
+        <p>📞 +91 99887 66554</p>
+    </div>
+</div>
+</section>
+<section id="availability" class="reveal">
+<div class="section-title"><h2>Blood Availability</h2></div>
+
+<table>
+<tr><th>Blood Group</th><th>Units Available</th></tr>
+<tr><td>A+</td><td>15</td></tr>
+<tr><td>A-</td><td>6</td></tr>
+<tr><td>B+</td><td>10</td></tr>
+<tr><td>B-</td><td>4</td></tr>
+<tr><td>O+</td><td>18</td></tr>
+<tr><td>O-</td><td>5</td></tr>
+<tr><td>AB+</td><td>7</td></tr>
+</table>
+
+<br><br>
+
+<div class="section-title"><h3>Request Blood</h3></div>
+<form onsubmit="requestBlood(event)">
+    <input placeholder="Patient Name">
+    <select>
+        <option>Select Blood Group</option>
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option><option>AB+</option>
+    </select>
+    <input type="number" placeholder="Units Required">
+    <textarea rows="4" placeholder="Hospital / Purpose"></textarea>
+    <button>Submit Request</button>
+    <p id="reqMsg" style="color:green;text-align:center;margin-top:10px;"></p>
+</form>
+</section>
+
+<!-- PURPOSE -->
+<section id="purpose" style="background:url('https://images.unsplash.com/photo-1582719478171-2b95f3a8f9a8') center/cover;" class="reveal">
+<div class="section-title"><h2 style="color:red;">Purpose of Blood Usage</h2></div>
+
+<div class="cards">
+    <div class="card">🚑 Emergency & Accidents</div>
+    <div class="card">🏥 Major Surgeries</div>
+    <div class="card">🎗️ Cancer Treatment</div>
+    <div class="card">👶 Childbirth & Anemia</div>
+    <div class="card">🧬 Blood Disorders</div>
+</div>
+</section>
+
+<!-- DONORS -->
+<section id="donors" class="reveal">
+<div class="section-title"><h2>Our Donors</h2></div>
+
+<div class="donors">
+    <div class="donor">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+        <h4>Rahul Sharma</h4>
+        <p>Blood Group: O+</p>
+    </div>
+    <div class="donor">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg">
+        <h4>Anita Verma</h4>
+        <p>Blood Group: A+</p>
+    </div>
+    <div class="donor">
+        <img src="https://randomuser.me/api/portraits/men/52.jpg">
+        <h4>Mohit Khan</h4>
+        <p>Blood Group: B+</p>
+    </div>
+    <div class="donor">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+        <h4>Pooja Patel</h4>
+        <p>Blood Group: AB+</p>
+    </div>
+</div>
+</section>
+
+
+
+<script>
+
+function requestBlood(e){
+    e.preventDefault();
+
+    let form=e.target;
+    let request={
+        name:form[0].value,
+        group:form[1].value,
+        units:form[2].value,
+        status:"Pending"
+    };
+
+    let requests=JSON.parse(localStorage.getItem("requests"))||[];
+    requests.push(request);
+    localStorage.setItem("requests",JSON.stringify(requests));
+
+    document.getElementById("reqMsg").innerText=
+        "✅ Request submitted & waiting for admin approval";
+    form.reset();
+}
+
+let bloodStock = JSON.parse(localStorage.getItem("bloodStock")) || [];
+
+function addBlood() {
+    let bloodGroup = document.getElementById("bloodGroup").value;
+    let units = document.getElementById("units").value;
+
+    if (bloodGroup === "" || units === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    bloodStock.push({ bloodGroup, units });
+    localStorage.setItem("bloodStock", JSON.stringify(bloodStock));
+
+    document.getElementById("bloodGroup").value = "";
+    document.getElementById("units").value = "";
+
+    displayBlood();
+}
+
+function displayBlood() {
+    let table = document.getElementById("bloodTable");
+    table.innerHTML = "";
+
+    bloodStock.forEach((item, index) => {
+        table.innerHTML += `
+            <tr>
+                <td>${item.bloodGroup}</td>
+                <td>${item.units}</td>
+                <td>
+                    <button onclick="deleteBlood(${index})">Delete</button>
+                </td>
+            </tr>
+        `;
+    });
+}
+
+function deleteBlood(index) {
+    bloodStock.splice(index, 1);
+    localStorage.setItem("bloodStock", JSON.stringify(bloodStock));
+    displayBlood();
+}
+
+// Load data on page refresh
+displayBlood();
+
+
+
+</script>
+<!-- CONTACT -->
+<section id="contact" class="reveal">
+    <div class="section-title">
+        <h2>Contact Us</h2>
+    </div>
+
+    <div class="contact-grid">
+        <form>
+            <input type="text" placeholder="Your Name">
+            <input type="email" placeholder="Email">
+            <textarea rows="5" placeholder="Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        
+
+<script src="script.js"></script>
+</body>
+</html>
+
+    </div>
+</section>
+
+<footer>
+<p>© 2026 Blood Bank Management System</p>
+</footer>
+<script>
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+    for(let i=0;i<reveals.length;i++){
+        const windowHeight = window.innerHeight;
+        const elementTop = reveals[i].getBoundingClientRect().top;
+        const revealPoint = 120;
+
+        if(elementTop < windowHeight - revealPoint){
+            reveals[i].classList.add("active");
+        }
+    }
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+</script>
+
+</body>
+</html>
