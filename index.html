@@ -115,18 +115,6 @@ section{
 }
 
 /* CARDS */
-.card{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
-}
-
-.card{
-    background:white;
-    padding:30px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
 .cards{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -202,11 +190,6 @@ form button{
     padding:20px;
     box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
-/* CONTACT */
-.contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:30px;}
 
 /* GALLERY */
 .gallery{
@@ -224,32 +207,17 @@ form button{
 
 /* BLOOD BANKS */
 .banks{
-      display:grid;
+    display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:25px;
 }
-body {
-    font-family: Arial, sans-serif;
-    background-color:white;
-}
 
-.blood-bank-container {
-    width: 80%;
-    margin: 30px auto;
-}
-
-.blood-bank {
-    background-color:#b30000;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(192, 21, 21, 0.1);
-}
-
-.blood-bank h2 {
-    color:skyblue ;
-    margin-bottom: 5px;
-}
+.bank{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    text-align:center;
 }
 
 /* CONTACT */
@@ -257,30 +225,6 @@ body {
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:30px;
-}
-
-form{
-    background:white;
-    padding:35px;
-    border-radius:15px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
-form input, form textarea{
-    width:100%;
-    padding:14px;
-    margin-bottom:15px;
-    border-radius:8px;
-    border:1px solid #ccc;
-}
-
-form button{
-    width:100%;
-    padding:15px;
-    background:#b30000;
-    color:white;
-    border:none;
-    border-radius:30px;
 }
 
 iframe{
@@ -297,6 +241,7 @@ footer{
     text-align:center;
     padding:20px;
 }
+
 /* NAVBAR ANIMATION */
 .nav-links a{
     position:relative;
@@ -359,70 +304,24 @@ footer{
     opacity:1;
     transform:translateY(0);
 }
-body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
+
+.whatsapp-btn{
+    width:100%;
+    padding:14px;
+    background:linear-gradient(45deg,#25D366,#128C7E);
+    border:none;
+    border-radius:50px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s ease;
 }
 
-.container {
-    width: 70%;
-    margin: auto;
-    margin-top: 40px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
+.whatsapp-btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 8px 20px rgba(0,0,0,0.3);
 }
-
-h1 {
-    text-align: center;
-    color: darkred;
-}
-
-.form-box, .table-box {
-    margin-top: 30px;
-}
-
-input {
-    padding: 10px;
-    margin: 5px;
-    width: 200px;
-}
-
-button {
-    height:60px;
-    width:100px;
-
-    background: darkred;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-button:hover {
-    background: #b30000;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 10px;
-    text-align: center;
-}
-
-th {
-    background: darkred;
-    color: white;
-}
-
 
 </style>
 </head>
@@ -444,11 +343,10 @@ th {
         <a href="admin.html">admin login</a>
     </div>
 </nav>
-
 </header>
 
 <!-- HERO -->
-<section id="home" class="hero" class="reveal">
+<section id="home" class="hero reveal">
 <div class="hero-content">
     <h2>Donate Blood, Save Lives</h2>
     <p>One donation can save up to three lives.</p>
@@ -457,12 +355,12 @@ th {
 </section>
 
 <!-- ABOUT -->
-<section id="about">
-<div class="section-title" class="reveal">
+<section id="about" class="reveal">
+<div class="section-title">
     <h2>About Our Blood Bank</h2>
 </div>
 
-<div class="about-grid" >
+<div class="about-grid">
     <div>
         <p>
             Our Blood Bank Management System connects donors, hospitals, and patients
@@ -497,14 +395,14 @@ th {
   </div>
 
   <div class="gallery">
-    <img src="https://www.hopkinsmedicine.org/-/media/images/health/2_-treatment/pathology/blood-banking-teaser.jpg"height="500px"width="500px">
-    <img src="https://cdn.britannica.com/09/147309-050-70516926/Blood-bank-employee-blood.jpg"height="500px"width="500px">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOD52N-v_BxzOfUtq1fATnCvkhiT-c4a0L-w&s"height="500px"width="500px">
-    <img src="https://www.shutterstock.com/image-photo/doctor-holds-blood-sample-tube-260nw-430010287.jpg"height="500px"width="500px">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz4p8Xrnp8cxSf_7MyeUeFqCZefSh5jv4tIQ&s"height="500px"width="500px">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrApHWxJY3Gqnrko53H-DDCrXREJrjq75GQ&s"height="500px"width="500px">
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfgUJc_IBI_sMEoUazSL1psHxYLpoDNEH9oQ&s"height="500px"width="500px">
-    <img src="https://vims.ac.in/vims-hospital/wp-content/uploads/2023/01/Benefits-of-blood-donation.jpg"height="500px"width="500px">
+    <img src="https://www.hopkinsmedicine.org/-/media/images/health/2_-treatment/pathology/blood-banking-teaser.jpg" loading="lazy" alt="Blood bank">
+    <img src="https://cdn.britannica.com/09/6/Blood-bank-employee-blood.jpg" loading="lazy" alt="Blood bank employee">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOD52N-v_BxzOfUtq1fATnCvkhiT-c4a0L-w&s" loading="lazy" alt="Blood samples">
+    <img src="https://www.shutterstock.com/image-photo/doctor-holds-blood-sample-tube-260nw-430010287.jpg" loading="lazy" alt="Blood sample">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz4p8Xrnp8cxSf_7MyeUeFqCZefSh5jv4tIQ&s" loading="lazy" alt="Blood donation">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHrApHWxJY3Gqnrko53H-DDCrXREJrjq75GQ&s" loading="lazy" alt="Blood bank equipment">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfgUJc_IBI_sMEoUazSL1psHxYLpoDNEH9oQ&s" loading="lazy" alt="Blood collection">
+    <img src="https://vims.ac.in/vims-hospital/wp-content/uploads/2023/01/Benefits-of-blood-donation.jpg" loading="lazy" alt="Blood donation benefits">
   </div>
 </section>
 
@@ -532,6 +430,8 @@ th {
     </div>
 </div>
 </section>
+
+<!-- AVAILABILITY -->
 <section id="availability" class="reveal">
 <div class="section-title"><h2>Blood Availability</h2></div>
 
@@ -564,8 +464,8 @@ th {
 </section>
 
 <!-- PURPOSE -->
-<section id="purpose" style="background:url('https://images.unsplash.com/photo-1582719478171-2b95f3a8f9a8') center/cover;" class="reveal">
-<div class="section-title"><h2 style="color:red;">Purpose of Blood Usage</h2></div>
+<section id="purpose" class="reveal">
+<div class="section-title"><h2 style="color:#b30000;">Purpose of Blood Usage</h2></div>
 
 <div class="cards">
     <div class="card">🚑 Emergency & Accidents</div>
@@ -582,147 +482,107 @@ th {
 
 <div class="donors">
     <div class="donor">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg">
+        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Donor">
         <h4>Rohit Sharma</h4>
         <p>Blood Group: O+</p>
     </div>
     <div class="donor">
-        <img src="https://randomuser.me/api/portraits/women/45.jpg">
+        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Donor">
         <h4>Anita Verma</h4>
         <p>Blood Group: A+</p>
     </div>
     <div class="donor">
-        <img src="https://randomuser.me/api/portraits/men/52.jpg">
+        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Donor">
         <h4>Mohit Khan</h4>
         <p>Blood Group: B+</p>
     </div>
     <div class="donor">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg">
+        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Donor">
         <h4>Pooja Patel</h4>
         <p>Blood Group: AB+</p>
     </div>
 </div>
 </section>
 
-
-
-<script>
-
-function requestBlood(e){
-    e.preventDefault();
-
-    let form=e.target;
-    let request={
-        name:form[0].value,
-        group:form[1].value,
-        units:form[2].value,
-        status:"Pending"
-    };
-
-    let requests=JSON.parse(localStorage.getItem("requests"))||[];
-    requests.push(request);
-    localStorage.setItem("requests",JSON.stringify(requests));
-
-    document.getElementById("reqMsg").innerText=
-        "✅ Request submitted & waiting for admin approval";
-    form.reset();
-}
-
-let bloodStock = JSON.parse(localStorage.getItem("bloodStock")) || [];
-
-function addBlood() {
-    let bloodGroup = document.getElementById("bloodGroup").value;
-    let units = document.getElementById("units").value;
-
-    if (bloodGroup === "" || units === "") {
-        alert("Please fill all fields");
-        return;
-    }
-
-    bloodStock.push({ bloodGroup, units });
-    localStorage.setItem("bloodStock", JSON.stringify(bloodStock));
-
-    document.getElementById("bloodGroup").value = "";
-    document.getElementById("units").value = "";
-
-    displayBlood();
-}
-
-function displayBlood() {
-    let table = document.getElementById("bloodTable");
-    table.innerHTML = "";
-
-    bloodStock.forEach((item, index) => {
-        table.innerHTML += `
-            <tr>
-                <td>${item.bloodGroup}</td>
-                <td>${item.units}</td>
-                <td>
-                    <button onclick="deleteBlood(${index})">Delete</button>
-                </td>
-            </tr>
-        `;
-    });
-}
-
-function deleteBlood(index) {
-    bloodStock.splice(index, 1);
-    localStorage.setItem("bloodStock", JSON.stringify(bloodStock));
-    displayBlood();
-}
-
-// Load data on page refresh
-displayBlood();
-
-
-
-</script>
 <!-- CONTACT -->
 <section id="contact" class="reveal">
-   <div class="section-title">
+  <div class="section-title">
     <h2>Contact Us</h2>
 
-    <form onsubmit="sendMsg(event)">
-        <div class="contact-grid">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <textarea id="message" rows="5" placeholder="Message" required></textarea>
-            <button type="submit">Send Message</button>
-        </div>
+    <form id="contactForm" onsubmit="sendMsg(event)">
+      <div class="contact-grid">
+        <input type="text" id="name" placeholder="Your Name" required>
+        <input type="email" id="email" placeholder="Email" required>
+        <textarea id="message" rows="5" placeholder="Message" required></textarea>
+
+        <button type="submit" class="whatsapp-btn">
+          Send Message on WhatsApp
+        </button>
+      </div>
     </form>
 
-    <p id="successMsg" style="color: green; display: none;">
-        Message Successful ✅
+    <p id="successMsg" style="color: green; display: none; margin-top:10px; text-align: center;">
+      ✅ Opening WhatsApp...
     </p>
-</div>
-
-<script>
-function sendMsg(event) {
-    event.preventDefault(); // page reload hone se roke
-
-    // Success message show kare
-    document.getElementById("successMsg").style.display = "block";
-
-    // Form reset kare (optional)
-    document.querySelector("form").reset();
-}
-</script>
-
-<script src="script.js"></script>
-</body>
-</html>
-
-    </div>
+  </div>
 </section>
 
 <footer>
 <p>© 2026 Blood Bank Management System</p>
 </footer>
+
 <script>
+function sendMsg(event) {
+    event.preventDefault();
+
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var message = document.getElementById("message").value;
+
+    var phoneNumber = "916395058629";
+
+    var text = 
+        "Blood Bank Contact Form\n\n" +
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Message: " + message;
+
+    var url = "https://wa.me/" + phoneNumber + "?text=" + encodeURIComponent(text);
+
+    window.open(url, "_blank");
+
+    document.getElementById("successMsg").style.display = "block";
+    document.getElementById("contactForm").reset();
+    
+    setTimeout(function(){
+        document.getElementById("successMsg").style.display = "none";
+    }, 3000);
+}
+
+function requestBlood(e){
+    e.preventDefault();
+
+    let form = e.target;
+    let request = {
+        name: form[0].value,
+        group: form[1].value,
+        units: form[2].value,
+        status: "Pending"
+    };
+
+    let requests = JSON.parse(localStorage.getItem("requests")) || [];
+    requests.push(request);
+    localStorage.setItem("requests", JSON.stringify(requests));
+
+    document.getElementById("reqMsg").innerText =
+        "✅ Request submitted & waiting for admin approval";
+    form.reset();
+}
+
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll(){
-    for(let i=0;i<reveals.length;i++){
+    for(let i = 0; i < reveals.length; i++){
         const windowHeight = window.innerHeight;
         const elementTop = reveals[i].getBoundingClientRect().top;
         const revealPoint = 120;
@@ -737,5 +597,5 @@ window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
 </script>
 
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9cfae6e7b4858558',t:'MTc3MTM5MDIxMC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
